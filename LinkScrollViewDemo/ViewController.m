@@ -41,7 +41,6 @@
     
     [self.view addSubview:self.resetLocationBtn];
     
-    
     UIView *navBar = [UIView new];
     navBar.frame = CGRectMake(0, 0, SCREEN_WIDTH, 64);
     [self.view addSubview:navBar];
@@ -61,7 +60,7 @@
 -(UITableView *)tableView{
     if (!_tableView) {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
-        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 400)];
+        _tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 200)];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
         _tableView.dataSource = self;
@@ -83,8 +82,11 @@
 -(MKMapView *)mapView{
     if (!_mapView) {
         _mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
-        CLLocationCoordinate2D coordinate = {30.26667, 120.20000};
+        CLLocationCoordinate2D coordinate = {31.142958, 121.293939};
+    
         [_mapView setCenterCoordinate:coordinate animated:YES];
+
+        _mapView.showsUserLocation = YES;
     }
     return _mapView;
 }

@@ -8,9 +8,12 @@
 
 #import "UITableView+Extension.h"
 
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+
 @implementation UITableView (Extension)
 - (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event {
-    if (point.y<400) {
+    if (point.y<SCREEN_HEIGHT - 200) {
         return NO;
     }
     return YES;
